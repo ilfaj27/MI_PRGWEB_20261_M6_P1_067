@@ -6,7 +6,7 @@ import { hitungBMI } from "@/app/lib/bmi";
 import Link from "next/link";
 
 
-export default function Page() {
+function PenghitungBMI() {
     const params = useParams();
     const nama = decodeURIComponent(params.namalengkap).replaceAll("-", " ");
 
@@ -84,4 +84,12 @@ export default function Page() {
             </Link>
         </main>
     );
-}    
+} 
+
+export default function Page() {
+    return (
+        <Suspense fallback={<p>Loading...</p>}>
+            <PenghitungBMI />
+        </Suspense>
+    );
+}
